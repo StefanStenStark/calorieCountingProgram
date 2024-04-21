@@ -12,35 +12,41 @@ function FoodItemPage(){
                 name: foodItemName,
                 calories: calories,
                 nutritionRating: nutritionalRation
-
-
             });
             console.log('Created meal:', response.data);
         } catch (error) {
             console.error('Error creating meal:', error.message);
         }
     };
-
     return (
         <div>
-            <input
-                type="text"
-                placeholder="Food item name"
-                value={foodItemName}
-                onChange={(e) => setFoodItemName(e.target.value)}
-            />
-            <input
-                type="number"
-                placeholder="calories"
-                value={calories}
-                onChange={(e) => setCalories(e.target.value)}
-            />
-            <input
-                type="text"
-                placeholder="NutritionalRation"
-                value={nutritionalRation}
-                onChange={(e) => setNutritionalRation(e.target.value)}
-            />
+            <div>
+                <label htmlFor="foodItemName">Food item name: </label>
+                <input
+                    type="text"
+                    id="foodItemName"
+                    value={foodItemName}
+                    onChange={(e) => setFoodItemName(e.target.value)}
+                />
+            </div>
+            <div>
+                <label htmlFor="calories">Calories: </label>
+                <input
+                    type="number"
+                    id="calories"
+                    value={calories}
+                    onChange={(e) => setCalories(e.target.value)}
+                />
+            </div>
+            <div>
+                <label htmlFor="nutritionalRation">Nutritional Ratio: </label>
+                <input
+                    type="text"
+                    id="nutritionalRation"
+                    value={nutritionalRation}
+                    onChange={(e) => setNutritionalRation(e.target.value)}
+                />
+            </div>
             <button onClick={handleCreateMeal}>Create Food item</button>
         </div>
     );

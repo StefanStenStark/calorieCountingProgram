@@ -16,6 +16,9 @@ export default function Navbar() {
                     <Link to="/foodItemPage">FoodItemPage</Link>
                 </li>
                 <li>
+                    <Link to="/mealFoodItemPage">MealFoodItemPage</Link>
+                </li>
+                <li>
                     <Link to="/about">About</Link>
                 </li>
             </ul>

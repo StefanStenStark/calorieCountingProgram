@@ -5,6 +5,7 @@ import AboutPage from "./AboutPage.jsx";
 import MealPage from "./MealPage.jsx";
 import Navbar from "./Navbar.jsx";
 import FoodItemPage from "./FoodItemPage.jsx";
+import MealFoodItemPage from "./MealFoodItemPage.jsx";
 
 function App() {
     return (
@@ -15,7 +16,7 @@ function App() {
             <Route path="/about" element={<AboutPage/>} />
             <Route path="/mealPage" element={<MealPage/>} />
             <Route path="/foodItemPage" element={<FoodItemPage/>} />
-
+            <Route path="/mealFoodItemPage" element={<MealFoodItemPage/>} />
         </Routes>
         </>
     );
