@@ -40,3 +40,25 @@
 .read-the-docs {
   color: #888;
 }
+
+.app-container {
+  padding-top: 70px;
+}
+
+.food-item-list {
+  list-style-type: none; /* Remove the dot from the li elements */
+  padding: 0;
+}
+.input-container {
+  display: flex;
+  align-items: center; /* Vertically center items */
+}
+
+.input-container label {
+  flex: 0 0 auto; /* Prevent label from stretching */
+  margin-right: 10px; /* Add some space between label and input */
+}
+
+.input-container input {
+  flex: 1; /* Take remaining space */
+}

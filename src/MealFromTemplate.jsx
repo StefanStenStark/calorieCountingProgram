@@ -6,7 +6,7 @@ function MealFromTemplate() {
     const [meals, setMeals] = useState([]);
 
     useEffect(() => {
-        axios.get('http://localhost:8080/allWithFoodItemsTemplates')
+        axios.get('http://localhost:8080/allMealsWithTemplate')
             .then(response => {
                 setMeals(response.data);
             })
@@ -20,17 +20,23 @@ function MealFromTemplate() {
     };
 
     return (
-        <div>
-            {meals.map(meal => (
-                <Link
-                    key={meal.id}
-                    to="/CreatingMealFromTemplate"
-                    onClick={() => handleMealClick(meal.id)}
-                >
-                    <button>{meal.name}</button>
-                </Link>
-            ))}
-        </div>
+        <>
+            <div>
+                {meals.map(meal => (
+
+                    <Link
+                        key={meal.id}
+                        to="/creatingMealFromTemplate"
+                        onClick={() => handleMealClick(meal.id)}
+                    >
+                        <div>
+                            <button>{meal.name}</button>
+                        </div>
+                    </Link>
+                ))}
+
+            </div>
+        </>
     );
 }
 

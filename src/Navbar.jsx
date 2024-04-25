@@ -13,10 +13,10 @@ export default function Navbar() {
                     <Link to="/mealPage">MealPage</Link>
                 </li>
                 <li>
-                    <Link to="/foodItemPage">FoodItemPage</Link>
+                    <Link to="/foodItemTemplatePage">FoodItemTemplatePage</Link>
                 </li>
                 <li>
-                    <Link to="/startingPage">startingPage</Link>
+                    <Link to="/mealFromTemplate">new meal</Link>
                 </li>
                 <li>
                     <Link to="/about">About</Link>

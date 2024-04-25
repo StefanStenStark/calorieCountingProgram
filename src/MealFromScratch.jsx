@@ -1,4 +1,3 @@
-import {Link} from "react-router-dom";
 import {useState} from "react";
 import axios from "axios";
 
@@ -7,7 +6,7 @@ function MealFromScratch() {
 
     const handleCreateMeal = async () => {
         try {
-            const response = await axios.post('http://localhost:8080/createMeal', {
+            const response = await axios.post('http://localhost:8080/createMealWithFoodItems', {
                 name: mealName
             });
             console.log('Created meal:', response.data);
