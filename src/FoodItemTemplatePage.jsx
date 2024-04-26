@@ -94,7 +94,7 @@ function FoodItemTemplatePage() {
                     onChange={(e) => setNutritionalRation(e.target.value)}
                 />
             </div>
-            <button onClick={handleCreateFoodItem}>Create Food item</button>
+            <button onClick={handleCreateFoodItem}>Create template</button>
 
             <div>
                 <h3>Food Items:</h3>

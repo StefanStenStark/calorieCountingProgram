@@ -21,20 +21,27 @@ function MealFromTemplate() {
 
     return (
         <>
-            <div>
-                {meals.map(meal => (
-
-                    <Link
-                        key={meal.id}
-                        to="/creatingMealFromTemplate"
-                        onClick={() => handleMealClick(meal.id)}
-                    >
-                        <div>
-                            <button>{meal.name}</button>
-                        </div>
-                    </Link>
-                ))}
-
+            <div className="app-container ">
+                {meals.length === 0 ? (
+                    <>
+                        <p>No meals found, please create one</p>
+                        <Link to="/createMealTemplate">
+                            <button>Create meal template</button>
+                        </Link>
+                    </>
+                ) : (
+                    meals.map(meal => (
+                        <Link
+                            key={meal.id}
+                            to="/creatingMealFromTemplate"
+                            onClick={() => handleMealClick(meal.id)}
+                        >
+                            <div>
+                                <button>{meal.name}</button>
+                            </div>
+                        </Link>
+                    ))
+                )}
             </div>
         </>
     );

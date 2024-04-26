@@ -5,21 +5,15 @@ import "./Navbar.css";
 export default function Navbar() {
     return (
         <nav className="nav">
-            <div className="site-title">
-                <Link to="/">Home</Link>
-            </div>
             <ul className="nav-links">
                 <li>
-                    <Link to="/mealPage">MealPage</Link>
+                    <Link to="/mealPage">History</Link>
                 </li>
                 <li>
-                    <Link to="/foodItemTemplatePage">FoodItemTemplatePage</Link>
+                    <Link to="/mealFromTemplate">New meal</Link>
                 </li>
                 <li>
-                    <Link to="/mealFromTemplate">new meal</Link>
-                </li>
-                <li>
-                    <Link to="/about">About</Link>
+                    <Link to="/createTemplatesPage">Template page</Link>
                 </li>
             </ul>
         </nav>

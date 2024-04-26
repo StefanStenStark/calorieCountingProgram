@@ -3,21 +3,23 @@ import axios from 'axios';
 
 function MealPage() {
     const [selectedMeal, setSelectedMeal] = useState(null);
-
+    const [typeOfTime, setTypeOfTime] = useState("Day");
     const [meals, setMeals] = useState([]);
 
     useEffect(() => {
-        async function fetchMeals() {
-            try {
-                const response = await axios.get("http://localhost:8080/allMealsWithNoTemplate");
-                console.log('meals:', response.data);
-                setMeals(response.data);
-            } catch (error) {
-                console.error('Error fetching meals:', error.message);
-            }
-        }
-        fetchMeals();
+        fetchMeals("day");
     }, []);
+
+    async function fetchMeals(typeOfTime) {
+        setTypeOfTime(typeOfTime);
+        try {
+            const response = await axios.get(`http://localhost:8080/allMealOnThisTime/${typeOfTime}`);
+            console.log('meals:', response.data);
+            setMeals(response.data);
+        } catch (error) {
+            console.error('Error fetching meals:', error.message);
+        }
+    }
 
     const handleShowFoodItems = (meal) => {
         setSelectedMeal(selectedMeal === meal ? null : meal);
@@ -33,40 +35,58 @@ function MealPage() {
     };
 
     return (
-        <div>
-            <h3>Meals eaten today</h3>
+        <div className="app-container ">
+            <div>
+                <button onClick={() => fetchMeals("day")}>
+                    Day
+                </button>
 
-                {meals.map((meal, index) => (
-                    <div key={index}>
-                        <button onClick={() => handleShowFoodItems(meal)}>
-                            {meal.name} - Total Calories: {calculateTotalCalories(meal.foodItemDTOS)}
-                        </button>
-                        {selectedMeal === meal && (
-                            <table>
-                                <thead>
-                                <tr>
+                <button onClick={() => fetchMeals("week")}>
+                    Week
+                </button>
+
+                <button onClick={() => fetchMeals("month")}>
+                    Month
+                </button>
+
+                <button onClick={() => fetchMeals("year")}>
+                    Year
+                </button>
+            </div>
+            <h3>Meals eaten this {typeOfTime}</h3>
+
+            {meals.map((meal, index) => (
+                <div key={index}>
+                    <button onClick={() => handleShowFoodItems(meal)}>
+                        {meal.name} - Total Calories: {calculateTotalCalories(meal.foodItemDTOS)}
+                    </button>
+                    {selectedMeal === meal && (
+                        <table>
+                            <thead>
+                            <tr>
                                 <th>Food Item</th>
-                                    <th>Calories/100 grams</th>
-                                    <th>Grams</th>
-                                    <th>Calories in total</th>
+                                <th>Calories/100 grams</th>
+                                <th>Grams</th>
+                                <th>Calories in total</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {meal.foodItemDTOS.map((foodItem, foodIndex) => (
+                                <tr key={foodIndex}>
+                                    <td>{foodItem.name}</td>
+                                    <td>{foodItem.calories}</td>
+                                    <td>{foodItem.grams}</td>
+                                    <td>{calculateCaloriesFor100Grams(foodItem.calories, foodItem.grams)}</td>
                                 </tr>
-                                </thead>
-                                <tbody>
-                                {meal.foodItemDTOS.map((foodItem, foodIndex) => (
-                                    <tr key={foodIndex}>
-                                        <td>{foodItem.name}</td>
-                                        <td>{foodItem.calories}</td>
-                                        <td>{foodItem.grams}</td>
-                                        <td>{calculateCaloriesFor100Grams(foodItem.calories, foodItem.grams)}</td>
-                                    </tr>
-                                ))}
-                                </tbody>
-                            </table>
-                        )}
-                    </div>
-                ))}
+                            ))}
+                            </tbody>
+                        </table>
+                    )}
+                </div>
+            ))}
 
         </div>
     );
 }
+
 export default MealPage;

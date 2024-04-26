@@ -1,16 +1,14 @@
 .nav {
     position: fixed;
     top: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 80%;
+    left: 0;
+    width: 100%;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
     padding: 10px;
-    background-color: #f0f0f0;
+    background-color: #81a182;
 }
-
 .nav-links {
     list-style: none;
     display: flex;
@@ -19,7 +17,7 @@
 
 .nav-links li a {
     text-decoration: none;
-    color: #333;
+    color: #ffffff;
 }
 
 

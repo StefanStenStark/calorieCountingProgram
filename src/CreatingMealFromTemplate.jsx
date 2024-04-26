@@ -82,7 +82,6 @@ function CreatingMealFromTemplate() {
         axios.post('http://localhost:8080/createMealWithFoodItems', updatedMeal)
             .then(response => {
                 console.log('Updated meal saved:', response.data);
-                // Navigate to the MealPage after saving the meal
                 navigate('/mealPage');
             })
             .catch(error => {
@@ -147,7 +146,6 @@ function CreatingMealFromTemplate() {
                                 </div>
                             </li>
                         ))}
-
                     <div>
                         <button onClick={toggleListVisibility}>
                             {showFoodItemList ? "Hide List" : "+"}
