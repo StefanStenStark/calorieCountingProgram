@@ -2,15 +2,12 @@ import {useEffect, useState} from "react";
 import axios from "axios";
 import {Link} from "react-router-dom";
 
-function ListOfTemplateMeals(){
-
+function DeleteTemplateMeals(){
     const [meals, setMeals] = useState([]);
-
-
 
     useEffect(() => {
         fetchMeals();
-    }, []); // Fetch meals on initial render
+    }, []);
 
     const fetchMeals = async () => {
         try {
@@ -30,7 +27,6 @@ function ListOfTemplateMeals(){
             console.error('Error deleting meal:', error);
         }
     };
-
     return(
         <>
             <div className="app-container ">
@@ -45,9 +41,8 @@ function ListOfTemplateMeals(){
                     </Link>
                 ))}
             </div>
-
         </>
     )
 }
 
-export default ListOfTemplateMeals;
+export default DeleteTemplateMeals;

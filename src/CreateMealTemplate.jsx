@@ -9,7 +9,6 @@ function CreateMealTemplate() {
         creationTime: null,
         foodItemDTOS: []
     };
-
     const [mealData, setMealData] = useState({...mealTemplateData});
     const [foodItems, setFoodItems] = useState([]);
 
@@ -25,7 +24,6 @@ function CreateMealTemplate() {
             console.error("Error fetching food items:", error);
         }
     };
-
     const handleInputChange = (index, property, value) => {
         const updatedFoodItems = [...mealData.foodItemDTOS];
         updatedFoodItems[index][property] = value;
@@ -34,11 +32,9 @@ function CreateMealTemplate() {
             foodItemDTOS: updatedFoodItems
         });
     };
-
     const calculateCaloriesFor100Grams = (calories, grams) => {
         return (calories * grams) / 100;
     };
-
     const addFoodItem = (foodItem) => {
         setMealData({
             ...mealData,
@@ -73,7 +69,6 @@ function CreateMealTemplate() {
                     onChange={e => setMealData({...mealData, name: e.target.value})}
                 />
             </div>
-
             {mealData.foodItemDTOS.map((foodItem, index) => (
                 <li key={index} className="food-item-list">
                         <div style={{border: "1px solid black", padding: "10px"}}>
@@ -110,7 +105,6 @@ function CreateMealTemplate() {
                 )
             )}
             {
-
                 <div style={{border: "1px solid black", padding: "10px"}}>
                     <p>food item templates</p>
                     {foodItems.map((foodItem, index) => (
@@ -119,12 +113,9 @@ function CreateMealTemplate() {
                         </button>
                     ))}
                 </div>
-
-
             }
         </div>
-    )
-        ;
+    );
 }
 
 export default CreateMealTemplate;

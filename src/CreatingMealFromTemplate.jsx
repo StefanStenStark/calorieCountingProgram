@@ -9,7 +9,11 @@ function CreatingMealFromTemplate() {
     const selectedMealId = localStorage.getItem("selectedMealId");
     const [showFoodItemList, setshowFoodItemList] = useState(false);
     const [foodItems, setFoodItems] = useState([]);
+    const navigate = useNavigate();
 
+    useEffect(() => {
+        fetchFoodItems();
+    }, []);
     useEffect(() => {
         if (selectedMealId) {
             axios.get(`http://localhost:8080/mealWithFoodItems/${selectedMealId}`)
@@ -30,10 +34,6 @@ function CreatingMealFromTemplate() {
             console.error("Error fetching food items:", error);
         }
     };
-    useEffect(() => {
-        fetchFoodItems();
-    }, []);
-
     const handleMealNameChange = (e) => {
         setUpdatedMeal({ ...updatedMeal, name: e.target.value });
     };
@@ -88,15 +88,11 @@ function CreatingMealFromTemplate() {
                 console.error('Error saving updated meal:', error);
             });
     };
-
-    const navigate = useNavigate();
-
     return (
         <div className="app-container">
             {mealData ? (
                 <>
                     <div>
-
                         <div>
                             <h4>Total Calories: {sumTotalCalories()} </h4>
                         </div>
@@ -150,7 +146,6 @@ function CreatingMealFromTemplate() {
                         <button onClick={toggleListVisibility}>
                             {showFoodItemList ? "Hide List" : "+"}
                         </button>
-
                         {showFoodItemList && (
                             <div>
                                 <div>

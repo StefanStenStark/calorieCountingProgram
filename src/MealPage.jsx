@@ -84,7 +84,6 @@ function MealPage() {
                     )}
                 </div>
             ))}
-
         </div>
     );
 }

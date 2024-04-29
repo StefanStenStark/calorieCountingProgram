@@ -18,7 +18,6 @@ function MealFromTemplate() {
     const handleMealClick = (mealId) => {
         localStorage.setItem("selectedMealId", mealId);
     };
-
     return (
         <>
             <div className="app-container ">

@@ -6,7 +6,6 @@ function FoodItemTemplatePage() {
     const [calories, setCalories] = useState(0);
     const [nutritionalRation, setNutritionalRation] = useState("");
     const [grams, setGrams] = useState(0);
-
     const [foodItems, setFoodItems] = useState([]);
 
     useEffect(() => {
@@ -22,7 +21,6 @@ function FoodItemTemplatePage() {
             console.error('Error fetching food items:', error.message);
         }
     }
-
     const handleCreateFoodItem = async () => {
         try {
             await axios.post('http://localhost:8080/createFoodItem', {
@@ -33,12 +31,10 @@ function FoodItemTemplatePage() {
                 type: "template"
             });
             console.log('Food item created successfully');
-            // Reset input fields
             setFoodItemName('');
             setCalories(0);
             setNutritionalRation('');
             setGrams(0);
-            // Fetch the updated list of food items after creating a new one
             fetchFoodItems();
         } catch (error) {
             console.error('Error creating food item:', error.message);
@@ -58,6 +54,7 @@ function FoodItemTemplatePage() {
 
     return (
         <div className="app-container">
+            <button onClick={handleCreateFoodItem}>Create template</button>
             <div className="input-container">
                 <label htmlFor="foodItemName">Food item name: </label>
                 <input
@@ -94,8 +91,6 @@ function FoodItemTemplatePage() {
                     onChange={(e) => setNutritionalRation(e.target.value)}
                 />
             </div>
-            <button onClick={handleCreateFoodItem}>Create template</button>
-
             <div>
                 <h3>Food Items:</h3>
                 <table>
